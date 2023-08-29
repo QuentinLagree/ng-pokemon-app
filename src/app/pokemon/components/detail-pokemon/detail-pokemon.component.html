@@ -1,0 +1,49 @@
+<div *ngIf="pokemon" class="mx-auto p-2" style="width: 50%; margin-top: 5%;">
+  <h2 class="text-center mb-5">{{ pokemon.name }}</h2>
+  <div class="card w-100 mb-3">
+    <div class="row g-0">
+      <span class="col-md-4" [style.background-image]="'url(' + pokemon.picture + ')'" style="background-repeat: no-repeat; background-position: center;"></span>
+      <div class="col-md-8">
+        <div class="card-body">
+          <table class="table">
+            <tbody>
+              <tr class="table-active">
+                <td>Nom</td>
+                <td><strong>{{ pokemon.name }}</strong></td>
+              </tr>
+              <tr>
+                <td>Points de vie</td>
+                <td><strong>{{ pokemon.hp }}</strong></td>
+              </tr>
+              <tr class="table-active">
+                <td>Dégâts</td>
+                <td><strong>{{ pokemon.cp }}</strong></td>
+              </tr>
+              <tr>
+                <td>Types</td>
+                <td>
+                  <span *ngFor="let type of pokemon.types" class="badge badge-pill p-2 mx-1"
+                    [style.background]="type | PokemonTypeColorPipe">{{type}}</span>
+                </td>
+              </tr>
+              <tr class="table-active">
+                <td>Date de création</td>
+                <td><em>{{ pokemon.created | date:"dd/MM/yyyy" }}</em></td>
+              </tr>
+            </tbody>
+          </table>
+          <hr class="mt-2">
+          <div class="d-flex flex-row mb-2">
+            <button type="button" class="btn btn-outline-danger me-2" goBack="/pokemons">Retour</button>
+            <button *ngIf="this.auth.isConnected" type="button" class="btn btn-outline-secondary me-2" (click)="goToEditPokemon(pokemon)">Editer</button>
+            <button *ngIf="this.auth.isConnected" type="button" class="btn btn-danger" (click)="deletePokemon(pokemon)">Supprimer</button>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h4 *ngIf='!pokemon' class="text-center"><loader></loader></h4>

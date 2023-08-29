@@ -1,0 +1,13 @@
+<nav class="navbar navbar-light bg-light justify-content-between px-5 ">
+  <a class="navbar-brand" href="#">POKEDEX</a>
+  <button *ngIf="!this.auth.isConnected" class="btn btn-outline-primary my-2 my-sm-0" type="submit" routerLink="/login">Se connecter</button>
+  <div  *ngIf="this.auth.isConnected" class="row align-items-center" style="width: 300px;">
+    <a class="col nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Mon Profil
+    </a>
+  <button class="col btn btn-outline-danger my-2 my-sm-0" type="submit" (click)="logout()">Se déconnecter</button>
+
+  </div>
+</nav>
+  
+<router-outlet></router-outlet>

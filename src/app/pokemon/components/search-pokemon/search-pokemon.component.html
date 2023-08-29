@@ -1,0 +1,27 @@
+<div class="jumbotron jumbotron-fluid mx-auto mb-5" style="width: 500px;">
+    <div class="mx-auto">
+        <div class="card card-body">
+          <input 
+          type="text" 
+          name="searchInput" 
+          id="searchInput"
+          class="form-control" 
+          placeholder="Rechercher un pokémon..."
+          #search
+          (keyup)="searchPokemon(search.value)">
+      </div>
+    </div>
+    <div *ngIf="pokemons$ | async ;let list">
+      <div class="collapse multi-collapse mt-2" [ngClass]="{'show' : list.length > 0}" id="multiCollapseExample2">
+        <div class="card card-body">
+            <div class="list-group">
+                <a 
+                *ngFor="let pokemon of list"
+                (click)="goToDetailPokemon(pokemon)"
+                class="list-group-item list-group-item-action"
+                style="cursor: pointer;"
+                > {{pokemon.name}} </a>
+              </div>
+        </div>
+      </div>
+    </div>

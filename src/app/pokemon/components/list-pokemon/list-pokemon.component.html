@@ -1,0 +1,33 @@
+<div class='container mt-5'>
+  <search-pokemon></search-pokemon>
+    <div class="row row-cols-3">
+      <div *ngFor='let pokemon of pokemonList' class="col" >
+        <outline-hover-card type="double" class="card mb-3" style="max-width: 540px;" (click)="goPokemon(pokemon.id)">
+          <loader *ngIf="!pokemon?.name || !pokemon?.picture || !pokemon?.types|| !pokemon?.created"></loader>
+          <div class="row g-0">
+            <div class="col">
+              <img [src]="pokemon.picture" class="img-fluid" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{ pokemon.name }}</h5>
+                <div class="col">
+                  <span *ngFor="let type of pokemon.types" class="badge badge-pill p-2 mx-1" [style.background]="type | PokemonTypeColorPipe">{{type}}</span>
+                </div>
+                <p class="card-text"><small class="text-body-secondary">{{pokemon.created | date:"dd/mm/yyyy"}}</small></p>
+              </div>
+            </div>
+          </div>
+        </outline-hover-card>
+    </div>
+    <a class="col" routerLink="/pokemon/add">
+      <outline-hover-card type="double" class="card text-center" style="max-width: 540px;
+    background-image: url(https://www.creativefabrica.com/wp-content/uploads/2019/02/Add-Icon-by-Kanggraphic-580x386.jpg);
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;">
+    </outline-hover-card>
+    </a>
+
+  </div>
+</div>
