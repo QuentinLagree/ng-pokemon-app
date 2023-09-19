@@ -29,7 +29,8 @@ For init project, you can execute in angular/cli, this command in project folder
 
 For create component, you can execute in angular/cli, this command in project folder: 
 >   -- ng generage component [name] or ng g c [name]
->   I discover two parameters:
+
+I discover two parameters:
 >    --- --dry-out | This parameters can be used check if component has been generate in good folder. Is a test command for check the generate command of angular/cli
 >    --- --inline-template | This parameters can be used for disable a separating of template and component. For example : In [PageNotFound](https://github.com/QuentinLagree/ng-pokemon-app/blob/master/src/app/page-not-found/page-not-found.component.ts) component (created with parameter) you can see that template and logical of component has not separate. However in [DetailPokemon](https://github.com/QuentinLagree/ng-pokemon-app/tree/master/src/app/pokemon/components/detail-pokemon) component (created without parameter) you can see 2 files, one is template and second is component's logic.
 
